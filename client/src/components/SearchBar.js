@@ -24,7 +24,7 @@ export default function SearchBar () {
 </button>
 </div>
 
-<div>
+<div className='global__cards'>
     {
          (
             
@@ -46,7 +46,7 @@ export default function SearchBar () {
             )
         })
     
-        )
+       
 
         // .map((val)=> {
         //     return (
@@ -57,6 +57,7 @@ export default function SearchBar () {
         //         </div>
         //     )
         // })
+        )
 }
 </div>
 </>

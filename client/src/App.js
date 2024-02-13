@@ -25,19 +25,17 @@ function App () {
   ///////////permission reading articles/////////
   const [user, setUser] = useState(null);
 useEffect(() => {
-    if(!user) {
-        axios.get('http://localhost:5000/profile').then(({data}) => {
+    if(user) {
+        axios.get('http://localhost:5000' , user).then(({data}) => {
             setUser(data)
             console.log("data" , data)
         })
     }
-    setUser();
+     setUser();
 }, []);
 
-
-
-
- console.log(user)
+console.log("user from axios" , user)
+console.log("user : " , user)
 
   return (
   <div className='page-container'>
@@ -46,25 +44,19 @@ useEffect(() => {
       <Header user={user}/>
       <Toaster position='top-center' toastOptions={{duration: 3000}}/>
 <Routes>
-  <Route path='/' element={<Home />} />
-  <Route path='/home' element={<Welcome />} />
-  <Route
-  path='/login' 
-  element={<Login />} 
-  />
-  <Route
-  path='/login' 
-  element={user ? <Navigate to ="/" /> : <Login />}
-  />
-    <Route path='/register' element={<Register />} />
+
+  <Route path='/' element={<Welcome />} />
+  <Route path='/home' element={<Home />} />
+  {/* <Route path='/test' element={user ? <Login /> : <Test /> }  /> */}
+  {/* <Route path='/login' element={<Login />} /> */}
+
+  <Route path='/login' element={!user ? <Login /> : <Welcome /> } />
+
+  <Route path='/register' element={!user && <Register /> } />
    
-   <Route path='/logout' element={ user && <Welcome />}  />
-  <Route 
-  path='/posts/:id' 
-  element={user ? <Posts /> : <Login /> }
+  <Route path='/posts/:id' element={!user ? <Login /> : <Posts /> } />
 
-  />
-
+  <Route path='/logout' element={!user && <Welcome />}  />
 
 
 </Routes>
@@ -75,7 +67,6 @@ useEffect(() => {
     </div>
     
 
-    // </UserContextProvider>
     
   );
 }
