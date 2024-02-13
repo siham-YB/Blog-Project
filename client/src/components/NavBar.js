@@ -29,7 +29,7 @@ window.addEventListener('scroll' , changeNavColor)
              (
        
             <nav >
-            <Link to="/" className="">Posts</Link>
+            <Link to="/home" className="">Posts</Link>
             <Link 
             onClick={logout} 
             
@@ -39,8 +39,8 @@ window.addEventListener('scroll' , changeNavColor)
             ) 
             : (
                 <nav>
-                <Link to="/home" className="">Welcome</Link>
-                <Link to="/" className="">Posts</Link>
+                <Link to="/" className="">Welcome</Link>
+                <Link to="/home" className="">Posts</Link>
                 <Link className="link" to="login">Login</Link>
                 <Link to="/register" className="">Register</Link>
                 </nav>
