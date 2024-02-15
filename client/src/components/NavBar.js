@@ -2,11 +2,16 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 export default function Header({ user }) {
-    const navigate = useNavigate();
     const logout = () => {
-        window.open('http://localhost:3000/logout', '_self');
-        navigate('/welcome');
+        document.cookie =
+            'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
     };
+
+    function handleLogout() {
+        logout();
+
+        window.location.href = '/';
+    }
 
     //change navcolor when scrolling
     const [navColor, setNavColor] = useState(false);
@@ -27,7 +32,7 @@ export default function Header({ user }) {
                         <Link to='/home' className=''>
                             Posts
                         </Link>
-                        <Link onClick={logout}>Logout</Link>
+                        <Link onClick={handleLogout}>Logout</Link>
                     </nav>
                 ) : (
                     <nav>
