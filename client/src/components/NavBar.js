@@ -1,56 +1,56 @@
-import {Link , useNavigate } from "react-router-dom"
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
-
-
-export default function Header ({user}) {
-    const navigate = useNavigate();
+export default function Header({ user }) {
     const logout = () => {
-   window.open("http://localhost:3000/logout", "_self");
-   navigate('/welcome')
+        document.cookie =
+            'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    };
+
+    function handleLogout() {
+        logout();
+
+        window.location.href = '/';
     }
 
-  //change navcolor when scrolling
-  const [navColor, setNavColor] = useState(false)
-  const changeNavColor = () => {
-    if(window.scrollY >=50) {
-        setNavColor(true)
-    } else {
-         setNavColor(false)
-    }
-}
-window.addEventListener('scroll' , changeNavColor)
+    //change navcolor when scrolling
+    const [navColor, setNavColor] = useState(false);
+    const changeNavColor = () => {
+        if (window.scrollY >= 50) {
+            setNavColor(true);
+        } else {
+            setNavColor(false);
+        }
+    };
+    window.addEventListener('scroll', changeNavColor);
+
     return (
         <>
-        <header className={navColor && 'header nav'  } > 
-            {
-             user || localStorage.clear('data')
-             ? 
-             (
-       
-            <nav >
-            <Link to="/home" className="">Posts</Link>
-            <Link 
-            onClick={logout} 
-            
-            >Logout</Link>
-            </nav>
-
-            ) 
-            : (
-                <nav>
-                <Link to="/" className="">Welcome</Link>
-                <Link to="/home" className="">Posts</Link>
-                <Link className="link" to="login">Login</Link>
-                <Link to="/register" className="">Register</Link>
-                </nav>
-            )
-        }
-    
-
-    
-        </header>
+            <header className={navColor && 'header nav'}>
+                {user ? (
+                    <nav>
+                        <Link to='/home' className=''>
+                            Posts
+                        </Link>
+                        <Link onClick={handleLogout}>Logout</Link>
+                    </nav>
+                ) : (
+                    <nav>
+                        <Link to='/' className=''>
+                            Welcome
+                        </Link>
+                        <Link to='/home' className=''>
+                            Posts
+                        </Link>
+                        <Link className='link' to='/login'>
+                            Login
+                        </Link>
+                        <Link to='/register' className=''>
+                            Register
+                        </Link>
+                    </nav>
+                )}
+            </header>
         </>
-       
-    )
+    );
 }
