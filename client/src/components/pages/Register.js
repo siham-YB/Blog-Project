@@ -28,7 +28,7 @@ export default function Register () {
                // setData({})
                toast.success('register successful')
                navigate('/login')
-            }
+            } 
          } catch (error) {
                console.log("there is an error-R" , error)
          }

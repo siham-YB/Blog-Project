@@ -29,17 +29,17 @@ export default function Header({ user }) {
             <header className={navColor && 'header nav'}>
                 {user ? (
                     <nav>
-                        <Link to='/home' className=''>
+                        <Link to='/' className=''>
                             Posts
                         </Link>
                         <Link onClick={handleLogout}>Logout</Link>
                     </nav>
                 ) : (
                     <nav>
-                        <Link to='/' className=''>
+                        {/* <Link to='/' className=''>
                             Welcome
-                        </Link>
-                        <Link to='/home' className=''>
+                        </Link> */}
+                        <Link to='/' className=''>
                             Posts
                         </Link>
                         <Link className='link' to='/login'>

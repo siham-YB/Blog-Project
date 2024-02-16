@@ -4,7 +4,6 @@ import Home from './components/pages/Home';
 import Posts from './components/pages/Posts';
 import Login from './components/pages/Login';
 import Register from './components/pages/Register';
-// import Logout from './components/pages/logout';
 import Welcome from './components/pages/Welcome';
 // import Footer from './components/Footer';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -36,18 +35,15 @@ function App() {
     // console.log('user : ', user);
     /////////////////////////////////////////////////////////////////////////////
 
-
     const [user, setUser] = useState(false);
 
-    useEffect(()=>{
+    useEffect(() => {
         const handleSetUser = function () {
             let token = document.cookie;
             return token ? setUser(true) : setUser(false);
         };
         handleSetUser();
-
-    },[])
-   
+    }, []);
 
     console.log('user', user);
 
@@ -61,11 +57,10 @@ function App() {
                         toastOptions={{ duration: 1000 }}
                     />
                     <Routes>
-                        <Route path='/' element={<Welcome />} />
-                        <Route path='/home' element={<Home />} />
-                        {/* <Route path='/test' element={user ? <Login /> : <Test /> }  /> */}
+                        {/* <Route path='/' element={<Welcome />} /> */}
+                        <Route path='/' element={<Home />} />
 
-                        <Route path='/login' element={<Login />} />
+                        <Route path='/login' element={!user && <Login />} />
 
                         <Route
                             path='/register'
