@@ -24,7 +24,7 @@ export default function Login() {
             } else {
                 // setData({})
                 toast.success('login successful');
-                
+
                 navigate('/');
             }
         } catch (error) {
@@ -52,7 +52,7 @@ export default function Login() {
                     <div className='password'>
                         <label htmlFor='password'>Password</label>
                         <input
-                            name='password'
+                            // name='password'
                             type='password'
                             placeholder='Enter password'
                             value={data.password}
@@ -65,7 +65,7 @@ export default function Login() {
 
                     <div className='login-btn'>
                         <button
-                            name='login-btn'
+                            // name='login-btn'
                             type='submit'
                             className='login-btn-int'
                         >
