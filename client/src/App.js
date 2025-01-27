@@ -52,6 +52,7 @@ function App() {
             <div className='container'>
                 <BrowserRouter>
                     <Header user={user} />
+                    {/* test the toaster */}
                     <Toaster
                         position='top-center'
                         toastOptions={{ duration: 1000 }}
